@@ -1,0 +1,180 @@
+<div class="span9" id="content">
+                      <!-- morris stacked chart -->
+                    <div class="row-fluid">
+
+
+                        <!-- block  créer une nouvelle facture-->
+                        <div class="block" ng-show="Afficher">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">Créer une nouvelle Facture</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <form class="form-horizontal" name="form-facture">
+                                        <fieldset>
+                                            <legend>Informations sur la Facture</legend>
+                                            <div class="control-group">
+                                                  <label class="control-label" for="num_facture">N° Facture:</label>
+                                                  <div class="controls">
+                                                  <input class="input-xlarge focused form-control" id="num_facture" type="number" value="" placeholder="Numéro de la facture" name="num-fact" ng-model="ajout.num_facture" ng-required=true;>
+                                                  <span ng-show="form-facture.num-fact.$dirty">champ obligatoire</span>
+                                                  </div>
+                                            </div>
+                                            <div class="control-group">
+                                                  <label class="control-label">Date:</label>
+                                                  <div class="controls">
+                                                  <input class="input-xlarge focused form-control" id="date_facture" type="date" value="" placeholder="Date facture" ng-model="ajout.date_fature">
+                                                  </div>
+                                            </div>
+                                            <div class="control-group">
+                                                  <label class="control-label">Client:</label>
+                                                  <div class="controls">
+                                                    <select class="input-xlarge focused form-control" id="quantite_article" type="text" value="" placeholder="quantité article" ng-model="ajout.nom_client">
+                                                    
+                                                    <option ng-repeat="person in personnes">{{person.nom_client}}</option>
+                                                    </select>
+                                                  </div>
+                                            </div>
+                                    
+                                            <div class="form-actions">
+                                                <a href="clients.html"><button class="btn btn-primary btn-lg"><i class="icon-arrow-left icon-white"></i> Retour</button></a>
+                                                <button type="reset" class="btn btn-warning btn-lg"><i class="icon-refresh icon-white"></i> Annuler</button>
+                                                <button type="submit" class="btn btn-primary btn-lg" ng-click="creer()">Créer</button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- fin block ajouter une nouvelle facture-->
+                        </div>
+
+                        <!-- block  Ajouter la nouvelle facture-->
+                        <div class="block" ng-show="Voir">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">Ajouter la nouvelle Facture</div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <form class="form-horizontal">
+                                        <fieldset>
+                                            <legend>Les Informations à ajouter</legend>
+                                              <div class="control-group">
+                                                      <label class="control-label" for="num_facture">Facture N°:..........</label>
+
+                                                      <label class="control-label" for="num_facture">Date:..........</label>
+                                                </div>
+
+                                                <div class="control-group">
+                                                  <label class="control-label" for="num_facture">Client:..........</label>
+                                                </div>
+                                                <div class="control-group">
+                                                      <label class="control-label for="lib_article" ">Libéllé Article:</label>
+                                                      <div class="controls">
+                                                        <select class="input-xlarge focused form-control" id="lib_article" type="text" value="" placeholder="Libéllé article">
+                                                            <option>Tomate</option>
+                                                            <option>Banane</option>
+                                                            <option>RIZ</option>
+                                                        </select>
+                                                      </div>
+                                                </div>
+                                                <div class="control-group">
+                                                      <label class="control-label" for="qte_article">Quantité:</label>
+                                                      <div class="controls">
+                                                        <input class="input-xlarge focused form-control" id="qte_article" type="number" value="" placeholder="Quantité Article">
+                                                      </div>
+                                                </div>
+                                                
+                                                <!--ajouter un article-->
+                                                <a href="ajouter.html"><button class="btn btn-success btn-xs pull-right"><i class="icon-plus-sign icon-white"></i>Ajouter</button><br></a>
+
+                                                <!--tableau de la facture-->
+                                                <table class="table table-bordered table-striped table-condensed">
+                                                <thead>
+                                                    <tr>
+                                                          <th>ID</th>
+                                                          <th style="text-align:center">Libéllé Article</th>
+                                                          <th style="text-align:center">Quantité</th>
+                                                          <th style="text-align:center">p.u</th>
+                                                          <th style="text-align:center">Montant</th>
+                                                          <th style="width:250px; text-align:center">Actions</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr class="success">
+                                                          <td>1</td>
+                                                          <td>Tomate</td>
+                                                          <td>50</td>
+                                                          <td>200</td>
+                                                          <td></td>
+                                                          <td><button class="btn btn-warning btn-xs"><i class="icon-pencil icon-white"></i> Modifier</button>
+                                                            <button class="btn btn-danger btn-xs"><i class="icon-remove icon-white"></i>Supprimer</button></td>
+                                                    </tr>
+                                                     <tr class="success">
+                                                          <td>1</td>
+                                                          <td>Tomate</td>
+                                                          <td>50</td>
+                                                          <td>200</td>
+                                                          <td></td>
+                                                          <td><button class="btn btn-warning btn-xs"><i class="icon-pencil icon-white"></i> Modifier</button>
+                                                            <button class="btn btn-danger btn-xs"><i class="icon-remove icon-white"></i>Supprimer</button></td>
+                                                    </tr>
+                                                </tbody>
+                                                </table><br><br>
+                                            
+                                            
+
+                                            <!--calcul de la facture-->
+
+                                            <div class="control-group" style="margin-left:235px">
+                                                  <label class="control-label" for="ht">Montant HT:</label>
+                                                  <div class="controls">
+                                                    <input class="input-xlarge focused form-control" id="ht"  value="" placeholder="Montant HT">
+                                                  </div>
+                                            </div>
+                                            <div class="control-group" style="margin-left:235px">
+                                                  <label class="control-label" for="rabais">Rabais:</label>
+                                                  <div class="controls">
+                                                    <input class="input-xlarge focused form-control" id="rabais"  value="" placeholder="rabais">
+                                                  </div>
+                                            </div>
+
+                                            <div class="control-group"  style="margin-left:235px">
+                                                  <label class="control-label" for="remise">Remise:</label>
+                                                  <div class="controls">
+                                                    <input class="input-xlarge focused form-control" id="remise"  value="" placeholder="Remise">
+                                                  </div>
+                                            </div>
+
+                                            <div class="control-group"  style="margin-left:235px">
+                                                  <label class="control-label" for="remise">TVA:</label>
+                                                  <div class="controls">
+                                                    <input class="input-xlarge focused form-control" id="tva"  value="" placeholder="tva">
+                                                  </div>
+                                            </div>
+
+                                            <div class="control-group"  style="margin-left:235px">
+                                                  <label class="control-label" for="ttc">Montant TTC:</label>
+                                                  <div class="controls">
+                                                    <input class="input-xlarge focused form-control" id="ttc"  value="" placeholder="Montant ttc">
+                                                  </div>
+                                            </div>
+                                            
+
+                                            <div class="form-actions">
+                                               <button class="btn btn-primary btn-lg"><a href="ventes.html" style="text-decoration:none;color:white"><i class="icon-arrow-left icon-white"></i> Retour</a></button>
+                                                <button type="reset" class="btn btn-warning btn-lg"><i class="icon-refresh icon-white"></i> Annuler</button>
+                                             
+                                            <button type="submit" class="btn btn-primary btn-lg"><a href="ventes.html" style="text-decoration:none;color:white"><i class="icon-refresh icon-white"></i> ENREGISTRER</a></button>
+
+                                            
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                     <!--  fin container fluid-->
+                </div>
+            </div>

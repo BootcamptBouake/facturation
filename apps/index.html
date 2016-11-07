@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="app">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>Admin Home Page</title>
+        <!-- Bootstrap -->
+        <link href="style/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="style/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="style/vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
+        <link href="style/assets/styles.css" rel="stylesheet" media="screen">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+        <script src="js/lib/angular.js"></script>
+        <script src="js/lib/angular-route.js"></script>
+        <script src="js/lib/angular-cookies.js"> </script>
+        <script src="js/script.js"></script>
+        <script src="pages/client/clientCtrl.js"></script>
+        <script src="pages/catalogue/catalogueCtrl.js"></script>
+        <script src="pages/ventes/factureCtrl.js"></script>
+
+
+
+    </head>
+    
+    <body ng-controller="loginCtrl">
+    <!--cadre de l'aplli -->
+    <div class="row-fluid" ng-hide="danger"><div class="span7"><div class="span6 pull-right alert alert-danger">login érroné</div></div> </div>
+    
+    <div class="span3"></div>
+    </div>
+    <div ng-hide="success" class="span6 bloc-center alert alert-success">succes</div>
+        <div class="apps" ng-show='board'  >
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Panel d'Administration</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i> {{loginNom}} <i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">Profil</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1"  ng-click="deconnexion()">Déconnexion</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">Tableau de Bord</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Administrer<b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    <li>
+                                        <a href="#">Outils <i class="icon-arrow-right"></i>
+
+                                        </a>
+                                        <ul class="dropdown-menu sub-menu">
+                                            <li>
+                                                <a href="#">Reports</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Logs</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Errors</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">SEO Settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Autres Liensk</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">Autres Liens</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Autres Liens</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Contenu <i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">Blog</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">News</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">Pages Personnalisées</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">Calendrier</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="#">Foire Aux Questions</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Utilisateurs <i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#"> Liste des utilisateurs</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">Rechercher</a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="-1" href="#">Permissions</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                </div>
+        
+            <div class="container-fluid">
+                 <div class="row-fluid">
+                   <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li class="active">
+                            <a href="index.html"><i class="icon-chevron-right"></i> TABLEAU DE BORD</a>
+                        </li>
+                        <li>
+                            <a href="#client"><i class="icon-chevron-right"></i> GESTION DES CLIENTS</a>
+                        </li>
+                        <li>
+                            <a href="#ventes"><i class="icon-chevron-right"></i> GESTION DES VENTES</a>
+                        </li>
+                         <li>
+                            <a href="#catalogue"><i class="icon-chevron-right"></i> CATALOGUE</a>
+                        </li>
+                      
+                        <li>
+                            <a href="#stats"><i class="icon-chevron-right"></i> STATISTIQUES</a>
+                        </li>
+                        
+                        <li>
+                            <a href="#conf"><i class="icon-chevron-right"></i> CONFIGURATION</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                   </div>
+                
+                <!--/span-->
+                    <div ng-view></div>
+                </div>
+            
+            <hr>
+            <footer>
+                <p>&copy; Bootcamp Bouaké</p>
+            </footer>
+            </div>
+          </div>
+        </div>
+        <!--/.fluid-container-->
+        <!-- page de login -->
+        <div id="login" ng-show='login' >
+                <div class="container">
+                    <div class="grosbloc">
+          
+                      <div class="head">
+                         <img src="style/images/user.png" alt=""/>
+                      </div>
+                       <br>
+                      <form class="form-signin" name="loginForm" novalidate=""><br>
+                         <h2 class="form-signin-heading">Connexion</h2>
+                         <input type="text" class="input-block-level" placeholder="Identifiant" name="nom" ng-model="sign.users" required>
+                         <span ng-show="loginForm.nom.$dirty&&loginForm.nom.$dirty">champ obligatoire</span>
+                         <input type="password" class="input-block-level" name="password" placeholder="Mot de passe" ng-model="sign.password">
+                         <label class="checkbox">
+                         <input type="checkbox" value="remember-me"> Se souvenir de moi
+                         </label>
+                         <button class="btn btn-large btn-success pull-right" type="submit" ng-click="connecter()">Connecter</button><br>
+                      </form>
+                    </div>
+                </div>
+        </div>
+                 <!-- /container -->
+        <!--fin de page de login -->
+       <script src="style/vendors/jquery-1.9.1.min.js"></script>
+        <script src="style/bootstrap/js/bootstrap.min.js"></script>
+        <script src="style/vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+        <script src="style/assets/scripts.js"></script>
+        <script>
+        $(function() {
+            // Easy pie charts
+            $('.chart').easyPieChart({animate: 1000});
+        });
+        </script>
+    </body>
+
+</html>
